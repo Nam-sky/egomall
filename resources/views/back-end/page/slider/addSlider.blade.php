@@ -13,13 +13,13 @@
         <form action="{{Route('Slider.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="name" class="font-weight-bold">Tên slider</label>
+                <label for="name" class="font-weight-bold">Tên slider:</label>
                 <input type="text" class="form-control" id="name" placeholder="Tên slider" name="name">
                 @if($errors->has('name'))
                     <p class="text-danger">{{$errors->first('name')}}</p>
                 @endif
             </div>
-            <label class="font-weight-bold">Ảnh</label>
+            <label class="font-weight-bold">Ảnh:</label>
             <div class="custom-file w-25">
                 <input type="file" class="form-control-file border" id="fileToUpload" name="fileToUpload">
             </div>
@@ -27,7 +27,26 @@
                 <p class="text-danger">{{$errors->first('fileToUpload')}}</p>
             @endif
             <div class="form-group">
-                <label for="status">Trạng thái Slider</label>
+                <label for="text">Text:</label>
+                <textarea class="form-control" rows="5" id="text" name="text"></textarea>
+                @if($errors->has('text'))
+                    <p class="text-danger">{{$errors->first('text')}}</p>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="link" class="font-weight-bold">Link:</label>
+                <input type="text" class="form-control" id="link" placeholder="Link..." name="link">
+            </div>
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select class="form-control" id="type" name="type">
+                    <option value="slider">Slider</option>
+                    <option value="bannerTop">Banner Top</option>
+                    <option value="bannerBottom">Banner Bottom</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Trạng thái Slider:</label>
                 <select class="form-control" id="status" name="status">
                     <option value="0">Đăng</option>
                     <option value="1">Không đăng</option>

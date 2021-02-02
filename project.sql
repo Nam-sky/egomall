@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th2 01, 2021 lúc 07:28 AM
+-- Thời gian đã tạo: Th2 02, 2021 lúc 06:43 AM
 -- Phiên bản máy phục vụ: 10.3.22-MariaDB
 -- Phiên bản PHP: 7.3.17
 
@@ -113,15 +113,6 @@ CREATE TABLE `contact` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `contact`
---
-
-INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`, `updated_at`, `created_at`) VALUES
-(1, 'nam', 'nam@gmail.com', '0858745402', 'aa', '2021-02-01 02:34:43', '2021-02-01 02:34:43'),
-(2, 'nguyenvannam', 'nam@gmail.com', '0858745402', 'aaấdfdf', '2021-02-01 02:35:00', '2021-02-01 02:35:00'),
-(3, 'nam123', 'nam@gmail.com', '0858745402', 'aaa', '2021-02-01 02:36:13', '2021-02-01 02:36:13');
 
 -- --------------------------------------------------------
 
@@ -342,7 +333,8 @@ INSERT INTO `permission` (`per_id`, `per_name`, `display_name`) VALUES
 (4, 'user', 'Quản lý user'),
 (5, 'slider', 'Quản lý Slider'),
 (6, 'keyword', 'Quản lý Keyword'),
-(7, 'post', 'Quản lý bài viết');
+(7, 'post', 'Quản lý bài viết'),
+(8, 'contact', 'Contact');
 
 -- --------------------------------------------------------
 
@@ -361,17 +353,18 @@ CREATE TABLE `permission_role` (
 --
 
 INSERT INTO `permission_role` (`permission_role_id`, `id_role`, `id_per`) VALUES
-(32, 8, 1),
-(33, 8, 2),
-(34, 8, 3),
-(35, 8, 4),
-(36, 8, 5),
-(37, 8, 6),
-(38, 8, 7),
 (41, 13, 7),
 (42, 14, 1),
 (43, 15, 4),
-(44, 16, 1);
+(44, 16, 1),
+(45, 8, 1),
+(46, 8, 2),
+(47, 8, 3),
+(48, 8, 4),
+(49, 8, 5),
+(50, 8, 6),
+(51, 8, 7),
+(52, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -510,6 +503,9 @@ CREATE TABLE `slider` (
   `slider_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -519,11 +515,16 @@ CREATE TABLE `slider` (
 -- Đang đổ dữ liệu cho bảng `slider`
 --
 
-INSERT INTO `slider` (`slider_id`, `name`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(9, 'Nguyễn Văn Nam', 'nha-trang.jpg', 0, '2021-01-04 02:44:20', '2021-01-10 06:28:57'),
-(10, 'abcdbc', 'slider1.png', 0, '2021-01-04 02:45:04', '2021-01-04 02:45:04'),
-(12, 'nam', 'da-nang.jpg', 0, '2021-01-10 06:29:21', '2021-01-10 06:29:54'),
-(13, 'slider 4', '2-1611389930-827-width660height371_601779028646c.jpg', 1, '2021-02-01 03:44:02', '2021-02-01 03:44:22');
+INSERT INTO `slider` (`slider_id`, `name`, `image`, `type`, `text`, `link`, `status`, `created_at`, `updated_at`) VALUES
+(9, 'Nguyễn Văn Nam', 'nha-trang.jpg', 'slider', NULL, NULL, 0, '2021-01-04 02:44:20', '2021-02-01 07:05:30'),
+(10, 'abcdbc', 'slider1.png', 'slider', NULL, NULL, 0, '2021-01-04 02:45:04', '2021-02-01 07:05:47'),
+(12, 'nam', 'da-nang.jpg', 'slider', NULL, NULL, 0, '2021-01-10 06:29:21', '2021-02-01 07:05:49'),
+(14, 'nam', '123.webp', 'bannerTop', 'Iphone 12', '/category/iphone-12.html', 0, '2021-02-01 06:58:50', '2021-02-01 09:46:11'),
+(15, 'banner 2', 'banner top 1.jpg', 'bannerTop', 'Iphone 11', '/category/iphone-11.html', 0, '2021-02-01 06:59:24', '2021-02-01 09:47:35'),
+(16, 'baner top 3', 'banner top 2.jpg', 'bannerTop', 'Ipad', '/category/ipad.html', 0, '2021-02-01 06:59:44', '2021-02-01 09:48:01'),
+(17, 'banner bottom 1', 'banner top 1.jpg', 'bannerBottom', 'Sangsung', '/category/samsung.html', 0, '2021-02-01 07:06:13', '2021-02-01 09:48:40'),
+(18, 'banner bottom 2', 'banner top 2.jpg', 'bannerBottom', 'Apple Watch', '/category/aplle-watch.html', 0, '2021-02-01 07:06:28', '2021-02-01 09:49:12'),
+(19, 'banner bottom 3', 'banner top 3.jpg', 'bannerBottom', 'Macbook', '/category/macbook.html', 0, '2021-02-01 07:16:07', '2021-02-01 09:49:37');
 
 -- --------------------------------------------------------
 
@@ -745,7 +746,7 @@ ALTER TABLE `code_sale`
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -787,13 +788,13 @@ ALTER TABLE `order_detail`
 -- AUTO_INCREMENT cho bảng `permission`
 --
 ALTER TABLE `permission`
-  MODIFY `per_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `per_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `permission_role`
 --
 ALTER TABLE `permission_role`
-  MODIFY `permission_role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `permission_role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT cho bảng `post`
@@ -823,7 +824,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT cho bảng `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `slider_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `slider_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

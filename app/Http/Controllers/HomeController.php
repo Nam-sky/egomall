@@ -27,7 +27,11 @@ class HomeController extends Controller
 
         $post = Post::orderBy('post_id','DESC')->where('status',0)->limit(3)->get();
 
-        return view('front-end.page.home',compact('pro_iphone','new_product','pro_samsung','post'));
+        $banner_top = Slider::where('status',0)->where('type','bannerTop')->orderBy('slider_id','DESC')->limit(3)->get();
+
+        $banner_bottom = Slider::where('status',0)->where('type','bannerBottom')->orderBy('slider_id','DESC')->limit(3)->get();
+
+        return view('front-end.page.home',compact('pro_iphone','new_product','pro_samsung','post','banner_top','banner_bottom'));
 
     }
     public function category(Request $request, $slug){

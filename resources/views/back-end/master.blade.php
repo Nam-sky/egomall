@@ -181,6 +181,14 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
+                        <a href="{{Route('contact.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Contact
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
                         <a href="{{Route('admin')}}" class="nav-link">
                             <i class="nav-icon fas fa-address-card"></i>
                             <p>

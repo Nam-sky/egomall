@@ -15,7 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::simplePaginate(10);
+        return view('back-end.page.contact.listContact',compact('contacts'));
     }
 
     /**
@@ -85,8 +86,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+        $contact = Contact::find($id);
+        $contact->delete();
+        return response()->json(['success'=>'Đổi mật khẩu thành công !']);
     }
 }

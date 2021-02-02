@@ -159,9 +159,15 @@ Route::prefix('admin')->middleware('auth')->group(function (){
 
     Route::middleware('checkrole:keyword')->group(function (){
     //    Keyword
-
         Route::get('keyword',[KeywordController::class,'index'])->name('Keyword.index');
     });
+    
+    Route::middleware('checkrole:contact')->group(function (){
+        // Contact
+            Route::get('contact',[ContactController::class,'index'])->name('contact.index');
+
+            Route::get('destroy-contact',[ContactController::class,'destroy'])->name('contact.destroy');
+        });
 });
 
 Route::prefix('cart')->group(function(){

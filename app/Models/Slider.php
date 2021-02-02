@@ -10,7 +10,7 @@ class Slider extends Model
     protected $table = 'slider';
     protected $primaryKey = 'slider_id';
     protected $fillable = [
-      'name','image',
+      'name','image','type','text','link'
     ];
     use HasFactory;
 }

@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*',function($view){
            $view->with([
                'category' => Category::where('parent_id',0)->get(),
-               'slider_main' => $slider = Slider::where('status',0)->get(),
+               'slider_main' => $slider = Slider::where('status',0)->where('type','slider')->get(),
                'cart' => new CartHelper(),
            ]);
         });

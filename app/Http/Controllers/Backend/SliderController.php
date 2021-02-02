@@ -50,6 +50,9 @@ class SliderController extends Controller
         $extension = end($array);
 
         $slider->image = $file.uniqid('_').'.'.$extension;
+        $slider->text = $request->text;
+        $slider->type = $request->type;
+        $slider->link = $request->link;
         $slider->status = $request->status;
         $slider->save();
         $request->file('fileToUpload')->move('acess/upload/slider',$slider->image);
@@ -98,6 +101,9 @@ class SliderController extends Controller
         else {
             $slider->image = $request->slider_old;
         }
+        $slider->text = $request->text;
+        $slider->type = $request->type;
+        $slider->link = $request->link;
         $slider->status = $request->status;
         $slider->save();
 

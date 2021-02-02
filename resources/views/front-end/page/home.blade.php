@@ -5,27 +5,15 @@
 @section('main')
     <div class="baner-top container-fluid pt-1">
         <div class="row w-100">
-            <div class="baner-top col-sm-4 d-block mx-auto">
-                <img src="acess/image/slider/baner-top-1.webp" class="w-100 h-100" alt="">
+        @foreach($banner_top as $item)
+            <div class="baner-top col-sm-4 d-block mx-auto" style="height:400px">
+                <img src="acess/upload/slider/{{$item->image}}" class="w-100 h-100" alt="">
                 <div class="baner-top-item">
-                    <h4 class="text-white">Rapido</h4>
-                    <button class="btn btn-danger text-white">Xem ngay</button>
+                    <h4 class="text-white">{{$item->text}}</h4>
+                    <a class="btn btn-danger text-white" href="{{$item->link}}">Xem ngay</a>
                 </div>
             </div>
-            <div class="baner-top col-sm-4 d-block mx-auto">
-                <img src="acess/image/slider/baner-top-2.webp" class="w-100 h-100" alt="">
-                <div class="baner-top-item">
-                    <h4 class="text-white">Rapido</h4>
-                    <button class="btn btn-danger text-white">Xem ngay</button>
-                </div>
-            </div>
-            <div class="baner-top col-sm-4 d-block mx-auto">
-                <img src="acess/image/slider/baner-top-3.webp" class="w-100 h-100" alt="">
-                <div class="baner-top-item">
-                    <h4 class="text-white">Rapido</h4>
-                    <button class="btn btn-danger text-white">Xem ngay</button>
-                </div>
-            </div>
+        @endforeach
         </div>
     </div>
     <div class="clock">
@@ -68,27 +56,15 @@
     </div>
     <div class="slider-main container-fluid">
         <div class="row">
-            <div class="col-sm-4 slider-main-item">
-                <img src="acess/image/slider/slider-main1.webp" class="w-100" alt="">
-                <div class="slider-main-detail">
-                    <h4 class="text-white pb-3">Vfloor</h4>
-                    <button class="btn">XEM THÊM</button>
+        @foreach($banner_bottom as $item)
+            <div class="baner-top col-sm-4 d-block mx-auto" style="height:400px">
+                <img src="acess/upload/slider/{{$item->image}}" class="w-100 h-100" alt="">
+                <div class="baner-top-item">
+                    <h4 class="text-white">{{$item->text}}</h4>
+                    <a class="btn btn-danger text-white" href="{{$item->link}}">Xem ngay</a>
                 </div>
             </div>
-            <div class="col-sm-4 slider-main-item">
-                <img src="acess/image/slider/slider-main1.webp" class="w-100" alt="">
-                <div class="slider-main-detail">
-                    <h4 class="text-white pb-3">Vfloor</h4>
-                    <button class="btn">XEM THÊM</button>
-                </div>
-            </div>
-            <div class="col-sm-4 slider-main-item">
-                <img src="acess/image/slider/slider-main1.webp" class="w-100" alt="">
-                <div class="slider-main-detail">
-                    <h4 class="text-white pb-3">Vfloor</h4>
-                    <button class="btn">XEM THÊM</button>
-                </div>
-            </div>
+        @endforeach
         </div>
     </div>
     <div class="clock">

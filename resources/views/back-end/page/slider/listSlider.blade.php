@@ -16,6 +16,7 @@
                 <th class="text-center" scope="col">STT</th>
                 <th class="text-center" scope="col">Tên Slider</th>
                 <th class="text-center" scope="col" colspan="2">Ảnh</th>
+                <th class="text-center" scope="col">Type</th>
                 <th class="text-center" scope="col">Trạng thái</th>
                 <th class="text-center" scope="col">Hành động</th>
             </tr>
@@ -27,7 +28,8 @@
                     <th class="text-center" scope="row">{{$stt++}}</th>
                     <td class="text-center">{{$val->name}}</td>
                     <td class="text-center" colspan="2"><img style="width: 400px;height: 150px" src="acess/upload/slider/{{$val->image}}" alt=""></td>
-                    <td class="text-center">{{$val->status == 0 ? "Đăng" : "Không đăng"}}</td>
+                    <td class="text-center">{{$val->type}}</td>
+                    <td class="text-center"><a id="status" style="cursor:pointer">{{$val->status == 0 ? "Đăng" : "Không đăng"}}</a></td>
                     <td class="text-center"><a class="btn btn-success  text-white" href="admin/edit-slider/{{$val->slider_id}}"><i class="fas fa-edit"></i></a> <a class="btn btn-danger text-white ml-1" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết ?');" href="admin/destroy-slider/{{$val->slider_id}}"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
             @endforeach

@@ -49,7 +49,7 @@
 
 <div class="w3-content w3-section w-100" >
     @foreach($slider_main as $val)
-    <img class="mySlides" src="acess/upload/slider/{{$val->image}}" style="width:100%;height: 500px">
+    <img class="mySlides" src="acess/upload/slider/{{$val->image}}" style="width:100%;height: 600px">
     @endforeach
 </div>
 

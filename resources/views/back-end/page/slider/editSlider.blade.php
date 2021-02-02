@@ -34,6 +34,25 @@
             @endif
             <br> <br>
             <div class="form-group">
+                <label for="text">Text:</label>
+                <textarea class="form-control" rows="5" id="text" name="text">{{$slider->text}}</textarea>
+                @if($errors->has('text'))
+                    <p class="text-danger">{{$errors->first('text')}}</p>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="link" class="font-weight-bold">Link:</label>
+                <input type="text" class="form-control" id="link" value="{{$slider->link}}" name="link">
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select class="form-control" id="type" name="type">
+                    <option {{$slider->type == 'slider' ? "selected = 'selected' " : ""}} value="slider">Slider</option>
+                    <option {{$slider->type == 'bannerTop' ? "selected = 'selected' " : ""}} value="bannerTop">Banner Top</option>
+                    <option {{$slider->type == 'bannerBottom' ? "selected = 'selected' " : ""}} value="bannerBottom">Banner Bottom</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="status">Trạng thái sản phẩm</label>
                 <select class="form-control" id="status" name="status">
                     <option {{$slider->status == 0 ? "selected = 'selected'" : ""}} value="0">Đăng</option>
